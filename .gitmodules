@@ -4,3 +4,6 @@
 [submodule "modules/godotenv"]
 	path = modules/godotenv
 	url = git@github.com:Windastella/GodotEnv.git
+[submodule "modules/godothttp"]
+	path = modules/godothttp
+	url = git@github.com:Windastella/GodotHttp.git
