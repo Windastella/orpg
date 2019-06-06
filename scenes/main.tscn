@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="main" type="Node"]
+
+[node name="ui" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="hud" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="scene" type="Node2D" parent="."]
+
+[node name="player" type="Node2D" parent="."]
