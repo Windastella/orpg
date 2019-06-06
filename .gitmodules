@@ -1,0 +1,6 @@
+[submodule "modules/godothub"]
+	path = modules/godothub
+	url = git@github.com:Windastella/godothub_client.git
+[submodule "modules/godotenv"]
+	path = modules/godotenv
+	url = git@github.com:Windastella/GodotEnv.git
