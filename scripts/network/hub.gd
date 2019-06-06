@@ -1,9 +1,12 @@
 extends Node
 
-onready var conn = GodotHub.new()
+var conn;
+var env;
 
 func _ready():
 	set_process(true)
+	env = get_node("/root/env");
+	conn = GodotHub.new( int(env.get("SERVER_PORT")), env.get("SERVER_HOST") );
 	
 	conn.connect("error",self,"_on_error")
 	conn.connect("connected",self,"_on_connected")
