@@ -33,7 +33,8 @@ config/icon="res://icon.png"
 [autoload]
 
 env="*res://modules/godotenv/godotenv/scripts/env.gd"
-hub="*res://scripts/network/hub.gd"
+hub="*res://scripts/network/Hub.gd"
+SceneManager="*res://scripts/scene/SceneManager.gd"
 
 [rendering]
 

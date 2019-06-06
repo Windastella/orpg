@@ -10,6 +10,5 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="scene" type="Node2D" parent="."]
+[node name="world" type="Node2D" parent="."]
 
-[node name="player" type="Node2D" parent="."]
