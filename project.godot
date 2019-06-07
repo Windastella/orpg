@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://modules/godotenv/godotenv/scripts/parser.gd"
 }, {
 "base": "Reference",
+"class": "GodotHttp",
+"language": "GDScript",
+"path": "res://modules/godothttp/godothttp/http.gd"
+}, {
+"base": "Reference",
 "class": "GodotHub",
 "language": "GDScript",
 "path": "res://modules/godothub/godothub/scripts/godothub.gd"
 } ]
 _global_script_class_icons={
 "GodotEnv_Parser": "",
+"GodotHttp": "",
 "GodotHub": ""
 }
 
@@ -33,7 +39,7 @@ config/icon="res://icon.png"
 [autoload]
 
 env="*res://modules/godotenv/godotenv/scripts/env.gd"
-hub="*res://scripts/network/Hub.gd"
+Hub="*res://scripts/network/Hub.gd"
 SceneManager="*res://scripts/scene/SceneManager.gd"
 
 [rendering]

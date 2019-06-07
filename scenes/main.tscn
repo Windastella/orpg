@@ -1,4 +1,15 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+onready var SceneManager = get_node(\"/root/SceneManager\")
+ 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	VisualServer.set_default_clear_color(Color(\"#322125\"));
+	SceneManager.nextLevel(\"res://scenes/map/map01.tscn\");
+"
 
 [node name="main" type="Node"]
 
@@ -11,4 +22,9 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="world" type="Node2D" parent="."]
+script = SubResource( 1 )
+
+[node name="cam" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
 
