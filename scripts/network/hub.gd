@@ -3,6 +3,8 @@ extends Node
 var conn;
 var env;
 
+signal channel()
+
 func _ready():
 	set_process(true)
 	env = get_node("/root/env");
@@ -15,6 +17,10 @@ func _ready():
 	conn.connect("left",self,"_on_left")
 	conn.connect("ping",self,"_on_ping")
 	
+func channel(channelname):
+	emit_signal("channel");
+	conn.change_channel(channelname);
+	
 func _process(dt):
 	conn.is_listening()
 	
@@ -22,19 +28,20 @@ func _on_error(err):
 	print("Error: ",err)
 	
 func _on_connected():
-	print("Connected to server")
+	print("Connected to server as "+String(conn.client.ID))
 	
 func _on_join(data):
-	print(data.msg)
+	print(data);
 	
 func _on_left(data):
-	print(data.msg)
+	print(data)
 	
 func _on_ping(ping):
 	print("Ping: ",ping)
 	
 func _on_receive(data):
-	print("Receive Data: ",data)
+	#print("Receive Data: ",data)
+	pass;
 	
 func _exit_tree():
 	conn.disconnect_server()

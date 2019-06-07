@@ -31,7 +31,6 @@ class SceneLoader:
 		
 		scene = load(path);
 		scenes.push_front(scene);
-		emit_signal("loaded",scene[0]);
 		return scenes[0];
 		
 	func loadSceneAsync(path):
@@ -87,15 +86,22 @@ func clearLevel():
 	var child = world.get_children()
 	for item in child:
 		item.queue_free()
+
+func spawnPlayer(path, isPlayer, id, pos):
+	var player = loader.loadScene(path).instance()
+	player.position = pos;
+	player.id = id;
+	player.isPlayer = isPlayer;
+	world.add_child(player);
+		
+#func spawnEntity(path, pos):
+#	var entity = loader.loadScene(path).instance()
+#	entity.set_translation(pos)
+#	world.add_child(entity)
 	
-func spawnEntity(path, pos):
-	var entity = loader.loadScene(path).instance()
-	entity.set_translation(pos)
-	world.add_child(entity)
-	
-func spawnProjectile(path, offset, dir, ref):
-	var projectile = loader.loadScene(path).instance();
-	projectile.set_translation(offset);
-	projectile.setDirection(dir);
-	projectile.setOwner(ref);
-	world.add_child(projectile);
+#func spawnProjectile(path, offset, dir, ref):
+#	var projectile = loader.loadScene(path).instance();
+#	projectile.set_translation(offset);
+#	projectile.setDirection(dir);
+#	projectile.setOwner(ref);
+#	world.add_child(projectile);
