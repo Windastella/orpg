@@ -2,6 +2,7 @@ extends Node
 
 var conn;
 var env;
+var connected = false;
 
 signal channel()
 
@@ -18,23 +19,25 @@ func _ready():
 	conn.connect("ping",self,"_on_ping")
 	
 func channel(channelname):
-	emit_signal("channel");
 	conn.change_channel(channelname);
+	emit_signal("channel");
 	
 func _process(dt):
 	conn.is_listening()
 	
 func _on_error(err):
 	print("Error: ",err)
+	connected = false;
 	
 func _on_connected():
 	print("Connected to server as "+String(conn.client.ID))
+	connected = true;
 	
-func _on_join(data):
-	print(data);
+func _on_join(id):
+	print(id);
 	
-func _on_left(data):
-	print(data)
+func _on_left(id):
+	print(id);
 	
 func _on_ping(ping):
 	print("Ping: ",ping)

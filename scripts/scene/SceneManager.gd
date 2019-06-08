@@ -92,6 +92,7 @@ func spawnPlayer(path, isPlayer, id, pos):
 	player.position = pos;
 	player.id = id;
 	player.isPlayer = isPlayer;
+	player.name = "player_"+String(id);
 	world.add_child(player);
 		
 #func spawnEntity(path, pos):
