@@ -227,7 +227,7 @@ script = ExtResource( 1 )
 texture = SubResource( 1 )
 vframes = 4
 hframes = 9
-frame = 27
+frame = 18
 region_rect = Rect2( 0, 0, 64, 64 )
 region_filter_clip = true
 
