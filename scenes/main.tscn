@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/scene/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/old_paper.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0, 0, 0, 0.392157 )
 
 [node name="main" type="Node"]
 script = ExtResource( 1 )
@@ -15,6 +23,7 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="main_menu" type="Panel" parent="ui"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -69,13 +78,93 @@ margin_right = 98.0
 margin_bottom = 115.0
 text = "Exit"
 
-[node name="hud" type="Control" parent="."]
+[node name="chat_menu" type="Control" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 540.0
+margin_right = -744.0
+
+[node name="chat_opened" type="Panel" parent="ui/chat_menu"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -340.0
+margin_right = 280.0
+margin_bottom = -10.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="chat_box" type="RichTextLabel" parent="ui/chat_menu/chat_opened"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -320.0
+margin_right = 250.0
+margin_bottom = -50.0
+focus_mode = 2
+bbcode_enabled = true
+bbcode_text = "
+"
+text = "
+"
+scroll_active = false
+scroll_following = true
+selection_enabled = true
+
+[node name="chat" type="Label" parent="ui/chat_menu/chat_opened"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 50.0
+margin_bottom = -10.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "CHAT:"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="chat_input" type="TextEdit" parent="ui/chat_menu/chat_opened"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = -40.0
+margin_right = 217.0
+margin_bottom = -15.0
+rect_scale = Vector2( 1.2, 1.22 )
+custom_styles/normal = SubResource( 2 )
+wrap_enabled = true
+
+[node name="chat_closed" type="Panel" parent="ui/chat_menu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -60.0
+margin_right = 280.0
+margin_bottom = -10.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="chat_box" type="RichTextLabel" parent="ui/chat_menu/chat_closed"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -30.0
+margin_right = 250.0
+grow_vertical = 0
+focus_mode = 2
+bbcode_enabled = true
+bbcode_text = "chat ~
+"
+text = "chat ~
+"
+scroll_following = true
+selection_enabled = true
+
+[node name="hud" type="CanvasLayer" parent="."]
 
 [node name="world" type="Node2D" parent="."]
 
 [connection signal="pressed" from="ui/main_menu/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="ui/main_menu/new_game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="ui/main_menu/exit" to="." method="_on_exit_pressed"]
+[connection signal="focus_entered" from="ui/chat_menu/chat_opened/chat_input" to="." method="_on_chat_input_focus_entered"]
+[connection signal="focus_exited" from="ui/chat_menu/chat_opened/chat_input" to="." method="_on_chat_input_focus_exited"]

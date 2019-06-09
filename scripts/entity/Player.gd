@@ -2,6 +2,7 @@ extends Entity
 class_name Player
 
 onready var hub = get_node("/root/Hub");
+onready var main = get_node("/root/main");
 
 export(bool) var isPlayer = false;
 export(int) var id = null;
@@ -36,6 +37,9 @@ func _physics_process(delta):
 	if(!isPlayer):
 		return;
 		
+	if(main.inMenu || main.typing):
+		return;
+		
 	var motion = Vector2.ZERO;
 	if(Input.is_action_pressed("ctrl_up")):
 		motion.y = -1;
@@ -47,6 +51,8 @@ func _physics_process(delta):
 		motion.x = 1;
 		
 	move(motion);
+
+func post_move(motion):
 	if(motion != Vector2.ZERO):
 		state = MOVING;
 		hub.conn.multicast({ 
@@ -72,4 +78,3 @@ func _physics_process(delta):
 					diry = dir.y
 				}
 			});
-			

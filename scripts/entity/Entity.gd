@@ -32,3 +32,7 @@ func move(motion):
 			playback.travel("left");
 		elif(dir.x == 1):
 			playback.travel("right");
+	post_move(motion);
+	
+func post_move(motion):
+	pass
