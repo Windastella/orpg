@@ -22,6 +22,8 @@ func _process(delta):
 	
 	get_node("ui/background").visible = empty;
 	get_node("ui/main_menu/continue").visible = !empty;
+	get_node("ui/main_menu/new_game").disabled = !empty;
+	get_node("ui/main_menu/load_game").disabled = empty;
 	
 func _on_new_game_pressed():
 	SceneManager.nextLevel(defaultLevel);
